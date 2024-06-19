@@ -49,7 +49,7 @@ def execute():
     else:
         print(f"Number {data} is not in range!")
 
-
+# Call that function to run the program
 execute()
 
 
