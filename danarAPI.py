@@ -22,18 +22,21 @@ def homePage() :
 
 # extract the data from the API using request.get (cause using GET Method)
 def getData(API_URL):
-    res = req.get(API_URL)
+    try:
+        res = req.get(API_URL)
 
-    data = res.json()
+        data = res.json()
 
-    # found the key == 'articles'
-    if "articles" in data and isinstance(data["articles"], list):
-        titles = data["articles"]
+        # found the key == 'articles'
+        if "articles" in data and isinstance(data["articles"], list):
+            titles = data["articles"]
 
-        # for gettin the title, where the key in nested object
-        for i, title in enumerate(titles[:5]):
-            title_article = title.get("title", "title not found")
-            print(f"{i+1} - : {title_article}")
+            # for gettin the title, where the key in nested object
+            for i, title in enumerate(titles[:5]):
+                title_article = title.get("title", "title not found")
+                print(f"{i+1} - : {title_article}")
+    except req.exceptions as e:
+        print(str(e))
 
 def execute():
     data = homePage()
