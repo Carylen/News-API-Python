@@ -24,7 +24,8 @@ def homePage() :
 def getData(API_URL):
     try:
         res = req.get(API_URL)
-
+        
+        # convert the object to dict in python, that seems like JSON in js
         data = res.json()
 
         # found the key == 'articles'
