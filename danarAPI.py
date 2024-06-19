@@ -8,8 +8,7 @@ API_URL_SPORTS = f'https://newsapi.org/v2/top-headlines?country=id&category=spor
 API_URL_HEALTH = f'https://newsapi.org/v2/top-headlines?country=id&category=health&apiKey={API_KEY}'
 API_URL_SCIENCE = f'https://newsapi.org/v2/top-headlines?country=id&category=science&apiKey={API_KEY}'
 
-# print(API_URL)
-
+# make it functional to reusable
 def homePage() :
     print('----- Welcome! what kind of news that you want to see? -----')
     print('[1] Tech News')
@@ -21,11 +20,13 @@ def homePage() :
 
     return data
 
+# extract the data from the API using request.get (cause using GET Method)
 def getData(API_URL):
     res = req.get(API_URL)
 
     data = res.json()
 
+    # found the key == 'articles'
     if "articles" in data and isinstance(data["articles"], list):
         titles = data["articles"]
 
